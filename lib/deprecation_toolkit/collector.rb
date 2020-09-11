@@ -30,7 +30,25 @@ module DeprecationToolkit
     end
 
     def <=>(other)
-      deprecations_without_stacktrace <=> other.deprecations_without_stacktrace
+      res = deprecations_without_stacktrace <=> other.deprecations_without_stacktrace
+      if res != 0
+        $stderr.puts << EOW
+uh oh! turns out these deprecations are different!
+
+==== current ?
+#{deprecations}
+
+=== recorded ?
+#{other.deprecations}
+
+These were normalised to:
+=== current
+#{deprecations_without_stacktrace}
+
+=== other
+#{other.deprecations_without_stacktrace}
+EOW
+      res
     end
 
     def deprecations_without_stacktrace
