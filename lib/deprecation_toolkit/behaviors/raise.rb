@@ -33,6 +33,8 @@ module DeprecationToolkit
           #{record_message}
 
           #{introduced_deprecations.join("\n")}
+
+          (project root: #{DeprecationToolkit::Configuration.project_root}, gem home: #{DeprecationToolkit::Configuration.gem_home})
         EOM
 
         super(message)
