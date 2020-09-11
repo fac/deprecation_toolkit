@@ -33,8 +33,6 @@ module DeprecationToolkit
           #{record_message}
 
           #{introduced_deprecations.join("\n")}
-
-          (project root: #{DeprecationToolkit::Configuration.project_root}, gem home: #{DeprecationToolkit::Configuration.gem_home})
         EOM
 
         super(message)
@@ -77,6 +75,8 @@ module DeprecationToolkit
           Fix or record the new deprecations to discard this error.
 
           #{record_message}
+
+          (project root: #{DeprecationToolkit::Configuration.project_root}, gem home: #{DeprecationToolkit::Configuration.gem_home})
 
           ===== Expected
           #{recorded_deprecations.deprecations.join("\n")}
