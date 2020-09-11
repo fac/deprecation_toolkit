@@ -46,6 +46,7 @@ module DeprecationToolkit
 
     def make_paths_relative(deprecation)
       gem_home = DeprecationToolkit::Configuration.gem_home
+$stderr.puts "removing #{gem_home} from\n#{deprecation}"
       deprecation
         .gsub(DeprecationToolkit::Configuration.project_root + '/', '')
         .gsub(gem_home, '~/.gem' + gem_home.split('.gem').last)
