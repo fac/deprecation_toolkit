@@ -30,9 +30,9 @@ RSpec.describe(DeprecationToolkit::Behaviors::Record) do
   end
 
   it '.trigger should remove the rails app path from deprecation warning' do |example|
-    real_warning =  "DEPRECATION WARNING: /Users/snehasomwanshi/dev/freeagent/app/models/payroll/rti_submission.rb:20: warning: Passing the keyword argument as the last hash parameter is deprecated" \
+    real_warning =  "/Users/snehasomwanshi/dev/freeagent/app/models/payroll/rti_submission.rb:20: warning: Passing the keyword argument as the last hash parameter is deprecated" \
                     " /Users/snehasomwanshi/dev/freeagent/compartments/base_models/app/models/company.rb:120: warning: The called method `set_history_for' is defined here"
-    recorded_warning = "DEPRECATION WARNING: app/models/payroll/rti_submission.rb:20: warning: Passing the keyword argument as the last hash parameter is deprecated" \
+    recorded_warning = "app/models/payroll/rti_submission.rb:20: warning: Passing the keyword argument as the last hash parameter is deprecated" \
                        " compartments/base_models/app/models/company.rb:120: warning: The called method `set_history_for' is defined here"
     expect_deprecations_recorded(recorded_warning, example) do
       ActiveSupport::Deprecation.warn(real_warning)
@@ -41,10 +41,10 @@ RSpec.describe(DeprecationToolkit::Behaviors::Record) do
     end
   end
 
-    it '.trigger should remove the gem home dir path from deprecation warning' do |example|
-    real_warning =  "DEPRECATION WARNING: /Users/snehasomwanshi/dev/freeagent/app/uploaders/attachment_attachment_uploader.rb:129: warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call" \
+  it '.trigger should remove the gem home dir path from deprecation warning' do |example|
+    real_warning =  "/Users/snehasomwanshi/dev/freeagent/app/uploaders/attachment_attachment_uploader.rb:129: warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call" \
                     " /Users/snehasomwanshi/.gem/ruby/2.7.1/gems/shrine-3.2.1/lib/shrine.rb:222: warning: The called method `generate_location' is defined here"
-    recorded_warning = "DEPRECATION WARNING: app/uploaders/attachment_attachment_uploader.rb:129: warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call" \
+    recorded_warning = "app/uploaders/attachment_attachment_uploader.rb:129: warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call" \
                        " ~/.gem/ruby/2.7.1/gems/shrine-3.2.1/lib/shrine.rb:222: warning: The called method `generate_location' is defined here"
     expect_deprecations_recorded(recorded_warning, example) do
       ActiveSupport::Deprecation.warn(real_warning)
