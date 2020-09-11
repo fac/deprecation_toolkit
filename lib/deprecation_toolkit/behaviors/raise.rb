@@ -32,6 +32,8 @@ module DeprecationToolkit
           You have introduced new deprecations in the codebase. Fix or record them in order to discard this error.
           #{record_message}
 
+          (project root: #{DeprecationToolkit::Configuration.project_root}, gem home: #{DeprecationToolkit::Configuration.gem_home})
+
           #{introduced_deprecations.join("\n")}
         EOM
 
@@ -54,6 +56,8 @@ module DeprecationToolkit
           You have removed deprecations from the codebase. Thanks for being an awesome person.
           The recorded deprecations needs to be updated to reflect your changes.
           #{record_message}
+
+          (project root: #{DeprecationToolkit::Configuration.project_root}, gem home: #{DeprecationToolkit::Configuration.gem_home})
 
           #{removed_deprecations.join("\n")}
         EOM
